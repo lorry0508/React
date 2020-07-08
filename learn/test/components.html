@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        // 1.使用函数定义一个组件
+        // function HelloMessage(props) {
+        //     return <h1>Hello, react</h1>;
+        // }
+        // const element = <HelloMessage />
+        // ReactDOM.render(
+        //     element,
+        //     document.getElementById('example')
+        // )
+
+        // 2.使用es6类定义一个组件
+        // <div id="example"></div>
+        // class Welcome extends React.Component {
+        //     render() {
+        //         return <h1>Hello, class</h1>;
+        //     }
+        // }
+        // ReactDOM.render(
+        //     <Welcome />,
+        //     document.getElementById('example')
+        // )
+
+        // 如果我们需要向组件传递参数，可以使用 this.props 对象,实例如下：
+        // <div id="example"></div>
+        // function HelloMessage(props) {
+        //     return <h1>Hello {props.name}</h1>
+        // }    
+        // const element = <HelloMessage name="Runoob" />;
+        // ReactDOM.render(
+        //     element,
+        //     document.getElementById('example')
+        // )
+        // 注意，在添加属性时， class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字。
+        
+
+
+        // 3.复合组件
+        // 我们可以通过创建多个组件来合成一个组件，即把组件的不同功能点进行分离。
+        <div id="example"></div>
+        function Name(props) {
+            return <h1>网站名称：{props.name}</h1>;
+        }
+        function Url(props) {
+            return <h1>网站地址：{props.url}</h1>;
+        }
+        function Nickname(props) {
+            return <h1>网站小名：{props.nickname}</h1>;
+        }
+        function App() {
+            return (
+                <div>
+                    <Name name="菜鸟教程" />
+                    <Url url="http://www.runoob.com" />
+                    <Nickname nickname="Runoob" />    
+                </div>
+            )
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>
