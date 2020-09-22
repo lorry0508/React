@@ -20,6 +20,7 @@ class TodoList extends React.Component {
 		})
 	}
 	handleItemDelete(index) {
+		/* 不允许直接修改state中的值 */
 		const list = [...this.state.list];
 		list.splice(index, 1);
 		this.setState({
@@ -35,7 +36,12 @@ class TodoList extends React.Component {
 						value={this.state.inputValue}
 						onChange={this.handleInputChange.bind(this)}
 					/>
-					<button onClick={this.handleBtnClick.bind(this)}>提交</button>
+					<button 
+						style={{ marginLeft: 10 }}
+						onClick={this.handleBtnClick.bind(this)}
+					>
+						提交
+					</button>
 				</div>
 				<ul>
 					{
