@@ -8,9 +8,9 @@ class TodoItem extends React.Component {
     render() {
         const { content } = this.props;
         return (
-            <div onClick={this.handleClick}>
+            <li onClick={this.handleClick}>
                 {content}
-            </div>
+            </li>
         );
     }
     handleClick() {
