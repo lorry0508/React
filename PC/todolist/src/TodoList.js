@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import './style.css';
 
 class TodoList extends React.Component {
 	constructor(props) {
@@ -31,12 +32,15 @@ class TodoList extends React.Component {
 		return (
 			<Fragment>
 				<div>
+					<label htmlFor="insertArea">输入内容</label>
 					<input
+						id="insertArea"
+						className='input'
 						placeholder='请输入内容'
 						value={this.state.inputValue}
 						onChange={this.handleInputChange.bind(this)}
 					/>
-					<button 
+					<button
 						style={{ marginLeft: 10 }}
 						onClick={this.handleBtnClick.bind(this)}
 					>
