@@ -8,7 +8,7 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { content }  = this.props;
+		const { content } = this.props;
 		return (
 			<div onClick={this.handleClick}>
 				{content}

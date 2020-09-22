@@ -16,7 +16,7 @@ class TodoList extends React.Component {
 	getTodoItem() {
 		return this.state.list.map((item, index) => {
 			return (
-				<TodoItem 
+				<TodoItem
 					key={index}
 					content={item}
 					deleteItemindex={index}
@@ -27,25 +27,23 @@ class TodoList extends React.Component {
 	}
 	handleInputChange(e) {
 		const value = e.target.value
-		this.setState(() => ({
+		this.setState(() => ({ // es6 箭头函数的写法，省略return
 			inputValue: value
-		}))
+		}));
 	}
 	handleBtnClick() {
-		this.setState((prevState) => ({
+		this.setState((prevState) => ({ // prevState 相当于 thisstate
 			inputValue: '',
-			list: [...this.state.list, this.state.inputValue]
-		}))
+			list: [...prevState.list, this.state.inputValue]
+		}));
 	}
 	handleItemDelete(index) {
 		/* 不允许直接修改state中的值 */
 		this.setState((prevState) => {
 			const list = [...prevState.list];
 			list.splice(index, 1);
-			return {
-				list: list
-			}
-		})
+			return { list };
+		});
 	}
 	render() {
 		return (

@@ -10,3 +10,4 @@
     1.7 dangerouslySetInnerHTML={{ __html: item }}, 用来净化用户不合时宜的使用innerHTML可能导致的cross-site scripting (XSS)攻击
     1.8 label一般用来扩大点击的区域，input上绑定id="insertArea"，原生html可以使用label标签上使用for="insertArea"，即可扩大点击的区域的效果；在react中仍然这样使用会报错，需要使用htmlFor="insertArea"
     1.9 在constructor中this.handleInputChange.bind(this)，比在调用时bind改变this指向更加节省性能
+    1.10 setState 函数中既能接收一个对象，也能接收一个函数
