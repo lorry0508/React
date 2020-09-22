@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+       /*  HTML 表单元素与 React 中的其他 DOM 元素有所不同,因为表单元素生来就保留一些内部状态。
+        在 HTML 当中，像 <input>, <textarea>, 和 <select> 这类表单元素会维持自身状态，并根据用户输入进行更新。但在React中，可变的状态通常保存在组件的状态属性中，并且只能用 setState() 方法进行更新。
+ */     
+        // class HelloMessage extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = {value: 'hello world'};
+        //         this.handleChange = this.handleChange.bind(this);
+        //     }
+        //     handleChange(event) {
+        //         this.setState({value: event.target.value});
+        //     }
+        //     render() {
+        //         var value = this.state.value;
+        //         return (
+        //             <div>
+        //                 <input type="text" value={value} onChange={this.handleChange} />
+        //                 <h4>{value}</h4>
+        //             </div>
+        //         );
+        //     }
+        // }
+        // ReactDOM.render(
+        //     <HelloMessage />,
+        //     document.getElementById('example')
+        // )
+
+
+        /* 你需要在父组件通过创建事件句柄 (handleChange) ，并作为 prop (updateStateProp) 传递到你的子组件上。 */
+        // class Content extends React.Component {
+        //     render() {
+        //         return (
+        //             <div>
+        //                 <input type="text" value={this.props.myDataProp} onChange={this.props.updateStateProp} />
+        //                 <h4>{this.props.myDataProp}</h4>
+        //             </div>
+        //         );
+        //     }
+        // }
+        // class HelloMessage extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = {value: 'hello World'};
+        //         this.handleChange = this.handleChange.bind(this);
+        //     }
+        //     handleChange(event) {
+        //         this.setState({value: event.target.value});
+        //     }
+        //     render() {
+        //         var value = this.state.value;
+        //         return (
+        //             <div>
+        //                 <Content myDataProp={value} updateStateProp={this.handleChange}></Content>
+        //             </div>
+        //         );
+        //     }
+        // }
+        // ReactDOM.render(
+        //     <HelloMessage />,
+        //     document.getElementById('example')
+        // );
+
+
+        /* Select 下拉菜单
+        在 React 中，不使用 selected 属性，而在根 select 标签上用 value 属性来表示选中项。
+         */
+        // class FlavorForm extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = {value: 'cocount'};
+
+        //         this.handleChange = this.handleChange.bind(this);
+        //         this.handleSubmit = this.handleSubmit.bind(this);
+        //     }
+        //     handleChange(event) {
+        //         this.setState({value: event.target.value});
+        //     }
+        //     handleSubmit(event) {
+        //         alert('Your favorite flavor is:' + this.state.value);
+        //         event.preventDefault();
+        //     }
+        //     render() {
+        //         return (
+        //             <form onSubmit={this.handleSubmit}>
+        //                 <label>
+        //                     选择你最喜欢的网站
+        //                     <select value={this.state.value} onChange={this.handleChange}>
+        //                         <option value="gg">Google</option>
+        //                         <option value="rn">Runoob</option>
+        //                         <option value="tb">Taobao</option>
+        //                         <option value="fb">Facebook</option>
+        //                     </select>
+        //                 </label>
+        //                 <input type="submit" value="提交" />
+        //             </form>
+        //         );
+        //     }
+        // }
+        // ReactDOM.render(
+        //     <FlavorForm />,
+        //     document.getElementById('example')
+        // );
+
+        /* 多个表单
+        当你有处理多个 input 元素时，你可以通过给每个元素添加一个 name 属性，来让处理函数根据 event.target.name 的值来选择做什么。 */
+        // class Reservation extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = {
+        //             isGoing: true,
+        //             numberOfGuests: 2
+        //         };
+        //         this.handleInputChange = this.handleInputChange.bind(this);
+        //     }
+        //     handleInputChange(event) {
+        //         const target = event.target;
+        //         const value = target.type === 'checkbox' ? target.checked : target.value;
+        //         const name = target.name;
+        //         this.setState({
+        //             [name]: value
+        //         });
+        //     }
+        //     render() {
+        //         return (
+        //             <form>
+        //                 <label>
+        //                     是否离开：
+        //                     <input type="checkbox" name="isGoing" checked={this.state.isGoing} onChange={this.handleInputChange} />
+        //                 </label>
+        //                 <br />
+        //                 <label>
+        //                     访客数：
+        //                     <input type="number" name="numberOfGuests" value={this.state.numberOfGuests} onChange={this.handleInputChange} />
+        //                 </label>
+        //             </form>
+        //         );
+        //     }
+        // }
+        // ReactDOM.render(
+        //     <Reservation />,
+        //     document.getElementById('example')
+        // )
+
+
+        /* React 事件 */
+        // class HelloMessage extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = {value: 'Hello Runoob!'};
+        //         this.handleChange = this.handleChange.bind(this);
+        //     }
+        //     handleChange(event) {
+        //         this.setState({value: '菜鸟教程'});
+        //     }
+        //     render() {
+        //         var value = this.state.value;
+        //         return (
+        //             <div>
+        //                 <button onClick={this.handleChange}>点我</button>
+        //                 <h4>{value}</h4>
+        //             </div>
+        //         );
+        //     }
+        // }
+        // ReactDOM.render(
+        //     <HelloMessage />,
+        //     document.getElementById('example')
+        // );
+
+        // 当你需要从子组件中更新父组件的 state 时，你需要在父组件通过创建事件句柄 (handleChange) ，并作为 prop (updateStateProp) 传递到你的子组件上。
+        class Content extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.props.updateStateProp}>点我</button>
+                        <h4>{this.props.myDataProp}</h4>
+                    </div>
+                );
+            }
+        }
+        class HelloMessage extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {value: 'Hello Runoob!'};
+                this.handleChange = this.handleChange.bind(this);
+            }
+            handleChange(event) {
+                this.setState({value: '菜鸟教程'});
+            }
+            render() {
+                var value = this.state.value;
+                return (
+                    <div>
+                        <Content myDataProp={value} updateStateProp={this.handleChange}></Content>
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(
+            <HelloMessage />,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>
