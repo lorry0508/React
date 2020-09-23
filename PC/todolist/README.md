@@ -69,3 +69,18 @@
         优点：
         1. 性能提升了。
         2. 它使得跨端应用得以实现。React Native
+
+### 3.React的生命周期函数
+    3.1 生命周期函数指在某一时刻组件会自动执行的函数
+    3.2 生命周期函数（按照执行顺序排序）：
+        一、Mounting
+            1.componentWillMount() // 在组件即将被挂载到页面的时刻自动执行,***新版react中被废除***
+            2.render() 函数渲染
+            3.componentDidMount() 在组件即将被挂载到页面的时刻自动执行
+        二、Updation
+            4.shouldComponentUpdate() 组件被更新之前，它会自动执行;要求返回一个boolean类型的值,true则调用render,false反之
+            5.componentWillUpdate() // 组件被更新之前，在shouldComponentUpdate()之后和render()之前，它会自动执行；但是它在shouldComponentUpdate()之后被执行；如果        shouldComponentUpdate返回true才会被执行，如果返回false这个函数就不会被执行啦，***新版react中被废除***
+            6.componentDidUpdate() 组件被更新完毕之后，在render之后，它会自动执行
+            7.componentWillReceiveProps() // 当一个组件从父组件接收了参数；只要父组件的render函数被重新执行了，子组件的这个生命周期函数就会被执行；如果这个组件第一次存在父组件中，不会执行；如果这个组件之前已经存在于父组件中，才会执行
+        三、Unmounting
+            8.componentWillUnmount() 当一个组件即将被从页面剔除的时候，会被执行

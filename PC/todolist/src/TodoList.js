@@ -49,6 +49,7 @@ class TodoList extends React.Component {
 		});
 	}
 	render() {
+		console.log('render');
 		return (
 			<Fragment>
 				<div>
@@ -73,6 +74,19 @@ class TodoList extends React.Component {
 				</ul>
 			</Fragment>
 		);
+	}
+	// 组件被挂载到页面之后，自动执行
+	componentDidMount() {
+		console.log('componentDidMount');
+	}
+	// 组件被更新之前，它会被执行
+	shouldComponentUpdate() {
+		console.log('shouldComponentUpdate');
+		return true;
+	}
+	// 组件更新完毕之后，它会被执行
+	componentDidUpdate() {
+		console.log('componentDidUpdate');
 	}
 }
 

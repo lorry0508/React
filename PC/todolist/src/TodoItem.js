@@ -14,6 +14,10 @@ class TodoItem extends React.Component {
             </li>
         );
     }
+    // 当一个组件即将被从页面剔除的时候，会被执行
+	componentWillUnmount() {
+		console.log('child componentWillUnmount')
+	}	
     handleClick() {
         const { deleteItem, deleteItemindex } = this.props;
         deleteItem(deleteItemindex);
