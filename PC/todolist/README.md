@@ -14,7 +14,7 @@
     1.11 PropTypes 对父组件传递给子组件参数进行类型校验, 在使用时记得小写propTypes; test: PropTypes.string.isRequired, isRequired要求必传; 使用defaultProps设置默认值
     1.12 React严格模式下，<React.StrictMode></React.StrictMode>中的组件render都会执行两次；
     1.13 当组件的state或props发生改变时，render函数就会重新执行；当父组件的render函数被运行时，它的子组件的render都被重新运行
-
+    1.14 React.createElement 也可以用来创建虚拟DOM，与JSX相比，代码更加复杂
 
 ### 2.React与虚拟DOM之间的关系
     1. state 数据
@@ -41,14 +41,31 @@
         性能的提升并不明显
 
     React生成虚拟DOM性能提升:
-    1. state 数据
-    2. JSX 模版
-    3. 数据 + 模版 结合，生成真实的DOM，来显示 
-        <div id='abc'><span>hello world</span></div>
-    4. 生成虚拟DOM（虚拟DOM就是一个JS对象，用它来描述真实DOM）（损耗了性能）
-        ['div', {id: 'abc'}, ['span', {}, 'hello world']]
-    5. state 发生变化
-    6. 数据 + 模版 生成新的虚拟DOM （极大的提升了性能）
-        ['div', {id: 'abc'}, ['span', {}, 'bye bye']]
-    7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span中内容（极大的提升性能）
-    8. 直接操作DOM，改变span中的内容
+        1. state 数据
+        2. JSX 模版
+        3. 数据 + 模版 结合，生成真实的DOM，来显示 
+            <div id='abc'><span>hello world</span></div>
+        4. 生成虚拟DOM（虚拟DOM就是一个JS对象，用它来描述真实DOM）（损耗了性能）
+            ['div', {id: 'abc'}, ['span', {}, 'hello world']]
+        5. state 发生变化
+        6. 数据 + 模版 生成新的虚拟DOM （极大的提升了性能）
+            ['div', {id: 'abc'}, ['span', {}, 'bye bye']]
+        7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span中内容（极大的提升性能）
+        8. 直接操作DOM，改变span中的内容
+
+    深入了解React中的虚拟DOM:
+        1. state 数据
+        2. JSX 模版
+        3. 数据 + 模版 生成虚拟DOM（虚拟DOM就是一个JS对象，用它来描述真实DOM）（损耗了性能）
+            ['div', {id: 'abc'}, ['span', {}, 'hello world']]
+        4. 用虚拟DOM的结构生成真实的DOM，来显示 
+            <div id='abc'><span>hello world</span></div>
+        5. state 发生变化
+        6. 数据 + 模版 生成新的虚拟DOM （极大的提升了性能）
+            ['div', {id: 'abc'}, ['span', {}, 'bye bye']]
+        7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span中内容（极大的提升性能）
+        8. 直接操作DOM，改变span中的内容
+
+        优点：
+        1. 性能提升了。
+        2. 它使得跨端应用得以实现。React Native
