@@ -12,4 +12,5 @@
     1.9 在constructor中this.handleInputChange.bind(this)，比在调用时bind改变this指向更加节省性能
     1.10 setState 函数中既能接收一个对象，也能接收一个函数
     1.11 PropTypes 对父组件传递给子组件参数进行类型校验, 在使用时记得小写propTypes; test: PropTypes.string.isRequired, isRequired要求必传; 使用defaultProps设置默认值
-    1.12 
+    1.12 React严格模式下，<React.StrictMode></React.StrictMode>中的组件render都会执行两次；
+    1.13 当组件的state或props发生改变时，render函数就会重新执行；当父组件的render函数被运行时，它的子组件的render都被重新运行
