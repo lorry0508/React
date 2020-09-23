@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import TodoItem from './TodoItem';
-import Test from './Test';
 import './style.css';
 
 class TodoList extends React.Component {
@@ -28,7 +27,7 @@ class TodoList extends React.Component {
 		})
 	}
 	handleInputChange(e) {
-		const value = e.target.value
+		const value = this.input.value;
 		this.setState(() => ({ // es6 箭头函数的写法，省略return
 			inputValue: value
 		}));
@@ -37,7 +36,9 @@ class TodoList extends React.Component {
 		this.setState((prevState) => ({ // prevState 相当于 thisstate
 			inputValue: '',
 			list: [...prevState.list, this.state.inputValue]
-		}));
+		}), () => {
+			console.log(this.ul.querySelectorAll('li').length, 'ref')
+		});
 	}
 	handleItemDelete(index) {
 		/* 不允许直接修改state中的值 */
@@ -48,7 +49,6 @@ class TodoList extends React.Component {
 		});
 	}
 	render() {
-		console.log('render');
 		return (
 			<Fragment>
 				<div>
@@ -57,6 +57,7 @@ class TodoList extends React.Component {
 						id="insertArea"
 						className='input'
 						placeholder='请输入内容'
+						ref={(input) => { this.input = input }}
 						value={this.state.inputValue}
 						onChange={this.handleInputChange}
 					/>
@@ -67,10 +68,9 @@ class TodoList extends React.Component {
 						提交
 					</button>
 				</div>
-				<ul>
+				<ul ref={(ul) => {this.ul = ul}}>
 					{this.getTodoItem()}
 				</ul>
-				<Test content={this.state.inputValue} />
 			</Fragment>
 		);
 	}

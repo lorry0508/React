@@ -22,7 +22,7 @@ class TodoItem extends React.Component {
 
 TodoItem.propTypes = {
     test: PropTypes.string.isRequired, // 表示为必传项
-    index: PropTypes.arrayOf(PropTypes.number, PropTypes.string), // 既可以是number， 又可以是字符串
+    index: PropTypes.oneOfType([PropTypes.number, PropTypes.string]), // oneOfType参数是一个数组，既可以是number， 又可以是字符串
     content: PropTypes.string,
     deleteItem: PropTypes.func
 };
