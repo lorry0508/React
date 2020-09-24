@@ -84,3 +84,7 @@
             7.componentWillReceiveProps() // 当一个组件从父组件接收了参数；只要父组件的render函数被重新执行了，子组件的这个生命周期函数就会被执行；如果这个组件第一次存在父组件中，不会执行；如果这个组件之前已经存在于父组件中，才会执行
         三、Unmounting
             8.componentWillUnmount() 当一个组件即将被从页面剔除的时候，会被执行
+
+### 4.React的生命周期函数的使用场景
+    4.1 shouldComponentUpdate(nextProps, nextState)可用作父组件改变时，子组件render是否跟随重新渲染，用作性能提升
+    4.2 componentDidMount()中一般发起ajax请求，该生命周期只执行一次；不能再render中发起ajax,会造成死循环

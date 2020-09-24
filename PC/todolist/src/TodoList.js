@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import TodoItem from './TodoItem';
+import axios from 'axios';
 import './style.css';
 
 class TodoList extends React.Component {
@@ -27,7 +28,7 @@ class TodoList extends React.Component {
 		})
 	}
 	handleInputChange(e) {
-		const value = this.input.value;
+		const value = e.target.value;
 		this.setState(() => ({ // es6 箭头函数的写法，省略return
 			inputValue: value
 		}));
@@ -36,9 +37,7 @@ class TodoList extends React.Component {
 		this.setState((prevState) => ({ // prevState 相当于 thisstate
 			inputValue: '',
 			list: [...prevState.list, this.state.inputValue]
-		}), () => {
-			console.log(this.ul.querySelectorAll('li').length, 'ref')
-		});
+		}));
 	}
 	handleItemDelete(index) {
 		/* 不允许直接修改state中的值 */
@@ -49,7 +48,6 @@ class TodoList extends React.Component {
 		});
 	}
 	render() {
-		console.log('render');
 		return (
 			<Fragment>
 				<div>
@@ -58,7 +56,6 @@ class TodoList extends React.Component {
 						id="insertArea"
 						className='input'
 						placeholder='请输入内容'
-						ref={(input) => { this.input = input }}
 						value={this.state.inputValue}
 						onChange={this.handleInputChange}
 					/>
@@ -69,24 +66,20 @@ class TodoList extends React.Component {
 						提交
 					</button>
 				</div>
-				<ul ref={(ul) => {this.ul = ul}}>
+				<ul>
 					{this.getTodoItem()}
 				</ul>
 			</Fragment>
 		);
 	}
-	// 组件被挂载到页面之后，自动执行
 	componentDidMount() {
-		console.log('componentDidMount');
-	}
-	// 组件被更新之前，它会被执行
-	shouldComponentUpdate() {
-		console.log('shouldComponentUpdate');
-		return true;
-	}
-	// 组件更新完毕之后，它会被执行
-	componentDidUpdate() {
-		console.log('componentDidUpdate');
+		axios.get('/api/todoList')
+			.then(() => {
+				alert('succ');
+			})
+			.catch(() => {
+				alert('error');
+			})
 	}
 }
 
