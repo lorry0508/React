@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button, List } from 'antd';
-import store from './store/index';
+import store from './store';
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -28,6 +28,13 @@ class TodoList extends React.Component {
         };
         store.dispatch(action);
     }
+    handleItemDelete(index) {
+        const action = {
+            type: 'delete_todo_item',
+            index
+        };
+        store.dispatch(action);
+    }
     render() {
         return (
             <div style={{ marginTop: '10px', marginLeft: '10px' }}>
@@ -44,8 +51,8 @@ class TodoList extends React.Component {
                     style={{ marginTop: '10px', width: '300px' }}
                     bordered
                     dataSource={this.state.list}
-                    renderItem={item => (
-                        <List.Item>
+                    renderItem={(item, index) => (
+                        <List.Item onClick={this.handleItemDelete.bind(this, index)}>
                             {item}
                         </List.Item>
                     )}
