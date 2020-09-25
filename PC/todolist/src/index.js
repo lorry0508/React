@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import TodoList from './TodoList';
-import App from './App';
+import TodoList from './TodoList';
 
 ReactDOM.render(
 	// <React.StrictMode>
 	// 	<TodoList />
 	// </React.StrictMode>, 严格模式
-	<App />,
+	<TodoList />,
 	document.getElementById('root')
 );

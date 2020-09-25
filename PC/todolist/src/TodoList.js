@@ -1,90 +1,36 @@
-import React, { Fragment } from 'react';
-import TodoItem from './TodoItem';
-import axios from 'axios';
-import './style.css';
+import React from 'react';
+import 'antd/dist/antd.css';
+import { Input, Button, List } from 'antd';
+
+const data = [
+    'Racing car sprays burning fuel into crowd.',
+    'Japanese princess to wed commoner.',
+    'Australian walks 100km after outback crash.',
+    'Man charged over missing wedding girl.',
+    'Los Angeles battles huge wildfires.',
+];
 
 class TodoList extends React.Component {
-	constructor(props) {
-		super(props);
-		// 当组件的state或props发生改变时，render函数就会重新执行
-		this.state = {
-			inputValue: '',
-			list: []
-		}
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleBtnClick = this.handleBtnClick.bind(this);
-		this.handleItemDelete = this.handleItemDelete.bind(this);
-	}
-	getTodoItem() {
-		return this.state.list.map((item, index) => {
-			return (
-				<TodoItem
-					key={index}
-					content={item}
-					deleteItemindex={index}
-					deleteItem={this.handleItemDelete}
-				/>
-			);
-		})
-	}
-	handleInputChange(e) {
-		const value = e.target.value;
-		this.setState(() => ({ // es6 箭头函数的写法，省略return
-			inputValue: value
-		}));
-	}
-	handleBtnClick() {
-		this.setState((prevState) => ({ // prevState 相当于 thisstate
-			inputValue: '',
-			list: [...prevState.list, this.state.inputValue]
-		}));
-	}
-	handleItemDelete(index) {
-		/* 不允许直接修改state中的值 */
-		this.setState((prevState) => {
-			const list = [...prevState.list];
-			list.splice(index, 1);
-			return { list };
-		});
-	}
-	render() {
-		return (
-			<Fragment>
-				<div>
-					<label htmlFor="insertArea">输入内容</label>
-					<input
-						id="insertArea"
-						className='input'
-						placeholder='请输入内容'
-						value={this.state.inputValue}
-						onChange={this.handleInputChange}
-					/>
-					<button
-						style={{ marginLeft: 10 }}
-						onClick={this.handleBtnClick}
-					>
-						提交
-					</button>
-				</div>
-				<ul>
-					{this.getTodoItem()}
-				</ul>
-			</Fragment>
-		);
-	}
-	componentDidMount() {
-		axios.get('/api/todoList')
-			.then((res) => {
-				this.setState(() => {
-					return {
-						list: [...res.data]
-					};
-				})
-			})
-			.catch(() => {
-				alert('error');
-			})
-	}
+    render() {
+        return (
+            <div style={{ marginTop: '10px', marginLeft: '10px' }}>
+                <div>
+                    <Input placeholder="todo info" style={{ width: '300px', marginRight: '10px' }} />
+                    <Button type="primary">提交</Button>
+                </div>
+                <List
+                    style={{marginTop: '10px', width: '300px'}}
+                    bordered
+                    dataSource={data}
+                    renderItem={item => (
+                        <List.Item>
+                            {item}
+                        </List.Item>
+                    )}
+                />
+            </div>
+        );
+    }
 }
 
 export default TodoList;
