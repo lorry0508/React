@@ -91,3 +91,10 @@
 
 ### 5.React中动画效果的使用
     5.1 使用yarn add react-transition-group
+
+### 6.Redux的使用
+    6.1 Redux的工作流程：
+        例如：React Components 借书的人
+              Actions Creators 行为（说的话、借的书等等）
+              Store 图书馆管理员
+              Reducers 图书馆记录
