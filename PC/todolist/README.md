@@ -88,3 +88,6 @@
 ### 4.React的生命周期函数的使用场景
     4.1 shouldComponentUpdate(nextProps, nextState)可用作父组件改变时，子组件render是否跟随重新渲染，用作性能提升
     4.2 componentDidMount()中一般发起ajax请求，该生命周期只执行一次；不能再render中发起ajax,会造成死循环
+
+### 5.React中动画效果的使用
+    5.1 使用yarn add react-transition-group
