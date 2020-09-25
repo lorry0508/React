@@ -1,0 +1,10 @@
+<CSSTransition
+    in={this.state.show}
+    timeout={1000}
+    classNames='fade'
+    unmountOnExit
+    onEntered={(el) => { el.style.color = 'pink' }}
+    appear={true}
+>
+    <div>Hello</div>
+</CSSTransition>
