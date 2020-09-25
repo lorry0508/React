@@ -98,3 +98,4 @@
               Actions Creators 行为（说的话、借的书等等）
               Store 图书馆管理员
               Reducers 图书馆记录
+        1.reducer 可以接收state, 但是绝对不能修改state
