@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import store from './store';
-// import axios from 'axios';
 import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from './store/actionCreator';
 import TodoListUI from './TodoListUI';
 
@@ -43,13 +42,7 @@ class TodoList extends React.Component {
     }
     componentDidMount() {
         const action = getInitList();
-        console.log(action);
-        // axios.get('/list.json')
-        //     .then((res) => {
-        //         const data = res.data;
-        //         const action = initListAction(data);
-        //         store.dispatch(action);
-        //     })
+        store.dispatch(action);
     }
 }
 
