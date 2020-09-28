@@ -104,6 +104,9 @@
     6.4 Redux-thunk的使用（重要），想要使用redux-thunk和redux-devtools需要注意的事项;redux-thunk使得store.dispatch(action)传递的action在只能是一个对象的基础上，也可以是一个函数
     6.5 Redux-thunk中间件的原理，是对dispatch方法的升级
     6.6 redux中间件：redux-saga,redux-promise,redux-thunk; 中间件指的是Redux的中间件，是Action和Store的中间
-    6.7 redux-saga的使用：
+    6.7 redux-saga（重要）的使用：
         1.要求saga.js中的函数必须要导出一个generator函数（生成器函数）
         2.generator函数中就不要使用promise形式的数据请求写法
+    6.8 Provider组件（重要）,提供器链接了store,里面的所有组件都有能力获取到store里面的所有内容；组件就可以通过react-redux中的connect方法
+    6.9 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+    6.10 input标签定义了value，但是没定义onChange会抛出警告，并将元素设置为只读
