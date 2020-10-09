@@ -43,23 +43,37 @@ export const NavItem = styled.div`
     }
 `;
 
+export const SearchWrapper = styled.div`
+    position: relative;
+    float: left;
+	.iconfont {
+		position: absolute;
+		right: 5px;
+		bottom: 5px;
+		width: 30px;
+		line-height: 30px;
+		border-radius: 15px;
+		text-align: center;
+	}
+`;
+
 export const NavSearch = styled.input.attrs({
-    placeholder: '搜索'
+	placeholder: '搜索'
 })`
-    width: 160px;
-    height: 38px;
-    padding: 0 20px;
-    margin-top: 9px;
-    margin-left: 20px;
-    box-sizing: border-box;
-    border: none;
-    outline: none;
-    border-radius: 19px;
-    background: #eee;
-    font-size: 14px;
-    &::placeholder {
-        color: #999;
-    }
+	width: 160p;
+	height: 38px;
+	padding: 0 20px;
+	margin-top: 9px;
+	margin-left: 20px;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	border-radius: 19px;
+	background: #eee;
+	font-size: 14px;
+	&::placeholder {
+		color: #999;
+	}
 `;
 
 export const Addition = styled.div`
