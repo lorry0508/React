@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  render() {
-    return (
-      <div className='dell'>
-        hello world
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className='dell'>
+				hello world
+			</div>
+		);
+	}
 }
 
 export default App;
