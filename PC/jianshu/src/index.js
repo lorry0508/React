@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import GlobalStyle from './style.js';
 import './statics/iconfont/iconfont.css';
 
 ReactDOM.render(
-	<React.StrictMode>
+	/* 严格模式 */
+	// <React.StrictMode>
+	<Fragment>
 		<GlobalStyle />
 		<App />
-	</React.StrictMode>,
+	</Fragment>,
+	// </React.StrictMode>,
 	document.getElementById('root')
 );
