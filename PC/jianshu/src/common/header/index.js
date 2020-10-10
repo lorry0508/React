@@ -15,7 +15,9 @@ import {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.header.get('focused')
+        // 两种方法等价：
+        focused: state.getIn(['header', 'focused'])
+        // focused: state.get('header').get('focused')
     }
 };
 
