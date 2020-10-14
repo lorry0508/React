@@ -8,8 +8,13 @@ import Topic from './components/Topic';
 import List from './components/List';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
+import { actionCreator } from './store';
+import { connect } from 'react-redux';
 
 class Home extends React.Component {
+    componentDidMount() {
+        this.props.changeHomeData();
+    }
     render() {
         return (
             <HomeWrapper>
@@ -27,4 +32,11 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+const mapDispatch = (dispatch) => ({
+    changeHomeData() {
+        const action = actionCreator.getHomeInfo();
+        dispatch(action);
+    }
+})
+
+export default connect(null, mapDispatch)(Home);
