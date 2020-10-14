@@ -37,6 +37,6 @@ const mapDispatch = (dispatch) => ({
         const action = actionCreator.getHomeInfo();
         dispatch(action);
     }
-})
+});
 
 export default connect(null, mapDispatch)(Home);
