@@ -9,7 +9,7 @@ import { actionCreator } from './store';
 
 class Detail extends React.Component {
     componentDidMount() {
-        this.props.getDetail();
+        this.props.getDetail(this.props.match.params.id);
     }
     render() {
         const { title, content } = this.props;
@@ -29,8 +29,8 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-    getDetail() {
-        dispatch(actionCreator.getDetail());
+    getDetail(id) {
+        dispatch(actionCreator.getDetail(id));
     }
 });
 
