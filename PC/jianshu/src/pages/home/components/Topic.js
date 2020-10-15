@@ -9,7 +9,7 @@ const mapState = (state) => ({
     list: state.get('home').get('topicList')
 });
 
-class Topic extends React.Component {
+class Topic extends React.PureComponent {
     render() {
         const { list } = this.props;
         return (

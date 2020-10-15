@@ -12,7 +12,7 @@ import Writer from './components/Writer';
 import { actionCreator } from './store';
 import { connect } from 'react-redux';
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
     componentDidMount() {
         this.props.changeHomeData();
         this.bindEvents(); // 销毁组件一定记得从window移除
