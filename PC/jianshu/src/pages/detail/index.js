@@ -5,15 +5,19 @@ import {
     Content
 } from './style';
 import { connect } from 'react-redux';
+import { actionCreator } from './store';
 
 class Detail extends React.Component {
+    componentDidMount() {
+        this.props.getDetail();
+    }
     render() {
         const { title, content } = this.props;
         return (
             <DetailWrapper>
                 <Header>{title}</Header>
                 {/* dangerouslySetInnerHTML防止内容被转义 */}
-                <Content dangerouslySetInnerHTML={{__html: content}} />
+                <Content dangerouslySetInnerHTML={{ __html: content }} />
             </DetailWrapper>
         );
     }
@@ -24,4 +28,10 @@ const mapState = (state) => ({
     content: state.getIn(['detail', 'content'])
 });
 
-export default connect(mapState, null)(Detail);
+const mapDispatch = (dispatch) => ({
+    getDetail() {
+        dispatch(actionCreator.getDetail());
+    }
+});
+
+export default connect(mapState, mapDispatch)(Detail);
