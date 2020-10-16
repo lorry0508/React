@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 import { actionCreator } from './store';
 
-class Detail extends React.Component {
+class Detail extends React.PureComponent {
     componentDidMount() {
         this.props.getDetail(this.props.match.params.id);
     }
