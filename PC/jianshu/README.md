@@ -7,3 +7,5 @@
     5.使用react-router-dom中的BrowserRouter和Route进行路由实现，BrowserRouter中只能有一个元素
     6.Provider中尽量只包裹一个元素
     7.Router路由标签中，使用exact表示路由的唯一性
+    8.react-loadable组件，用于异步加载组件，提升性能
+    9.withRouter传递组件参数时使用这个方法，异步加载组件时使用
